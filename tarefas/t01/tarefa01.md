@@ -14,3 +14,4 @@
 - [tarefa01-q06.sql](./tarefa01-q06.sql)
 - [tarefa01-q09.sql](./tarefa01-q09.sql)
 - [tarefa01-q12.sql](./tarefa01-q12.sql)
+- [tarefa01-q18.sql](./tarefa01-q18.sql)
