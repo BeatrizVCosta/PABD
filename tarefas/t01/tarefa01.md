@@ -11,3 +11,4 @@
 ## Scripts das Consultas Resolvidas
 
 - [tarefa01-q02.sql](./tarefa01-q02.sql)
+- [tarefa01-q06.sql](./tarefa01-q06.sql)
