@@ -12,3 +12,4 @@
 
 - [tarefa01-q02.sql](./tarefa01-q02.sql)
 - [tarefa01-q06.sql](./tarefa01-q06.sql)
+- [tarefa01-q09.sql](./tarefa01-q09.sql)

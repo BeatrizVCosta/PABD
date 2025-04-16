@@ -1,39 +1,35 @@
--- Departamento
-INSERT INTO departamento (codigo, descricao, cod_gerente) VALUES
-(1, 'TI', 1),
-(2, 'RH', 2),
-(3, 'Financeiro', 3),
-(4, 'Marketing', 4),
-(5, 'Projetos', 5);
+-- Inserindo departamentos (alguns sem gerente inicialmente)
+INSERT INTO departamento (descricao, cod_gerente) VALUES 
+('TI', NULL),
+('RH', NULL),
+('Marketing', NULL);
 
--- Funcionário
-INSERT INTO funcionario (codigo, nome, sexo, dt_nasc, salario, cod_depto)
-VALUES
-(1, 'Ana Souza', 'F', '1985-03-12', 5000, NULL),  -- gerente
-(2, 'Carlos Lima', 'M', '1990-07-22', 3000, NULL),
-(3, 'Marina Dias', 'F', '1992-11-03', 3200, NULL),
-(4, 'João Pedro', 'M', '1988-01-15', 2800, NULL),
-(5, 'Fernanda Melo', 'F', '1995-06-09', 3100, NULL);
--- Projeto
-INSERT INTO projeto (codigo, nome, descricao, cod_depto, cod_responsavel, data_inicio, data_fim) VALUES
-(1, 'Sistema Interno', 'Desenvolvimento de sistema interno', 1, 1, '2023-01-01', '2023-06-30'),
-(2, 'Portal RH', 'Criação de portal para RH', 2, 2, '2023-02-15', '2023-09-30'),
-(3, 'Controle Financeiro', 'Sistema financeiro web', 3, 3, '2023-03-01', '2023-12-31'),
-(4, 'Campanha Digital', 'Campanha de marketing online', 4, 4, '2023-04-10', '2023-07-15'),
-(5, 'Novo Produto', 'Lançamento de produto novo', 5, 5, '2023-05-20', '2023-11-30');
+-- Inserindo funcionários (alguns com e outros sem departamento)
+INSERT INTO funcionario (nome, sexo, dt_nasc, salario, cod_depto) VALUES
+('João Silva', 'M', '1980-01-01', 7000.00, 1),  -- futuro gerente TI
+('Maria Souza', 'F', '1990-05-10', 4500.00, 2),  -- futura gerente RH
+('Carlos Lima', 'M', '1985-03-15', 3000.00, 1),
+('Ana Paula', 'F', '1995-07-22', 5000.00, 2),
+('Bruno Costa', 'M', '1998-12-12', 8000.00, 1),  -- salário maior que gerente
+('Rita Lopes', 'F', '2000-11-11', 4200.00, NULL); -- sem departamento
 
--- Atividade
-INSERT INTO atividade (codigo, nome, descricao, cod_responsavel, data_inicio, data_fim) VALUES
-(1, 'Levantamento de Requisitos', 'Entrevistas com usuários', 1, '2023-01-01', '2023-01-15'),
-(2, 'Design de Interface', 'Protótipos de tela', 2, '2023-02-01', '2023-02-28'),
-(3, 'Implementação Backend', 'APIs e lógica', 3, '2023-03-01', '2023-06-01'),
-(4, 'Testes Funcionais', 'Testes com usuários', 4, '2023-04-01', '2023-04-20'),
-(5, 'Documentação Final', 'Entrega da documentação', 5, '2023-05-01', '2023-05-15');
+-- Atualizando os gerentes nos departamentos
+UPDATE departamento SET cod_gerente = 1 WHERE codigo = 1;
+UPDATE departamento SET cod_gerente = 2 WHERE codigo = 2;
 
--- Atividade_Projeto
+-- Inserindo projetos (um com e outro sem responsável)
+INSERT INTO projeto (nome, descricao, cod_depto, cod_responsavel, data_inicio, data_fim) VALUES
+('Sistema Interno', 'Desenvolvimento do sistema', 1, 3, '2024-01-01', '2024-12-31'),
+('Treinamento RH', 'Capacitação de pessoal', 2, 4, '2024-02-01', '2024-06-30'),
+('Campanha Publicitária', 'Lançamento de campanha', 3, NULL, '2024-03-01', '2024-08-31');
+
+-- Inserindo atividades (uma com e outra sem responsável)
+INSERT INTO atividade (nome, descricao, cod_responsavel, data_inicio, data_fim) VALUES
+('Desenvolver módulo A', 'Módulo A do sistema', 3, '2024-01-01', '2024-03-31'),
+('Elaborar treinamento', 'Treinamento para novos funcionários', 4, '2024-02-01', '2024-04-30'),
+('Ajustar orçamento', 'Análise financeira', NULL, '2024-03-01', '2024-05-15');
+
+-- Relacionando atividades aos projetos
 INSERT INTO atividade_projeto (cod_projeto, cod_atividade) VALUES
 (1, 1),
-(1, 3),
-(2, 2),
-(3, 4),
-(5, 5);
+(2, 2);
